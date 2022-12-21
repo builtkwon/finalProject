@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title  %}
-Bookmark Add
-{% endblock %}
-
+{% block title %} home.html {% endblock %}
 {% block content %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+
+
 
   <form action="" method="post">
     {% csrf_token %}

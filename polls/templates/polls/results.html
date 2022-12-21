@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %} home.html {% endblock %}
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+
 <body>
 <h1>{{question.question_text}}</h1>
 <ul>
@@ -14,4 +15,5 @@
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
 <a href="{% url 'polls:chart' question.id %}">Chart</a>
 </body>
+{% endblock %}
 </html>

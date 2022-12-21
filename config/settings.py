@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os.path
 from pathlib import Path
-import os, json
-from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,20 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR,'secrets.json')
-
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    try:
-        print("check: ", secrets[setting])
-        return secrets[setting]
-    except KeyError:
-        error_mesg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = '5c(6%n=1)yr*+ok%c$$+eq4r&65l61x_@toj*k876^907a%#&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -141,7 +126,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 
    BASE_DIR / 'static',
-
+   os.path.join(BASE_DIR,'static'),
 ]
 
 STATICFILES_FINDERS = (
